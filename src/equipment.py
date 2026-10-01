@@ -5,7 +5,7 @@ from enums import EquipmentStatus
 
 
 class Equipment:
-    def __init__(self, name, status):
+    def __init__(self, name):
         # External attributes
         self.name = name
         self.status = EquipmentStatus.AVAILABLE
