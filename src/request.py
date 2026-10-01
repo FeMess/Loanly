@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randint
 
-from enums import RequestStatus
+from enums import EquipmentStatus, RequestStatus
 
 
 class Request:
@@ -30,3 +30,20 @@ class Request:
             )
 
         self.status = RequestStatus.REJECTED
+
+    def approve(self):
+        if not self.status == RequestStatus.PENDING:
+            raise ValueError(
+                "You cannot approve this request. The status must be 'Pending'"
+            )
+
+        for equipment in self.equipments:
+            if not equipment.status == EquipmentStatus.AVAILABLE:
+                raise ValueError(
+                    "You cannot approve this request. The material is not available"
+                )
+
+        for equipment in self.equipments:
+            equipment.reserve()
+
+        self.status = RequestStatus.APPROVED
