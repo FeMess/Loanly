@@ -19,3 +19,13 @@ def reject_request(current_user, request):
         raise ValueError("You are not the Manager of the Employee requester")
 
     request.reject()
+
+
+def approve_request(current_user, request):
+    if not current_user.role == UserRole.MANAGER:
+        raise ValueError("You are not in a Manager role to approve this request")
+
+    if not current_user.department == request.employee.department:
+        raise ValueError("You are not the Manager of the Employee requester")
+
+    request.approve()
