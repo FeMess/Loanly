@@ -1,4 +1,5 @@
 from enums import UserRole
+from request import Request
 
 
 def cancel_request(current_user, request):
@@ -29,3 +30,10 @@ def approve_request(current_user, request):
         raise ValueError("You are not the Manager of the Employee requester")
 
     request.approve()
+
+
+def create_request(current_user, equipments):
+    if not current_user.role == UserRole.EMPLOYEE:
+        raise ValueError("You are not in a Employee role to create a request")
+
+    Request(current_user, equipments)
