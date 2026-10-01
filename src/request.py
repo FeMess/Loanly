@@ -22,3 +22,11 @@ class Request:
             )
 
         self.status = RequestStatus.CANCELLED
+
+    def reject(self):
+        if not self.status == RequestStatus.PENDING:
+            raise ValueError(
+                "You cannot reject this request. The status must be 'Pending'"
+            )
+
+        self.status = RequestStatus.REJECTED
