@@ -19,3 +19,9 @@ class RequestStatus(Enum):
     REJECTED = "Rejected"
     CANCELLED = "Cancelled"
     EXPIRED = "Expired"
+
+
+class LoanStatus(Enum):
+    ON_GOING = "On Going"
+    COMPLETED = "Completed"
+    OVERDUE = "Overdue"
