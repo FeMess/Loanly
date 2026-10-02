@@ -36,4 +36,4 @@ def create_request(current_user, equipments):
     if not current_user.role == UserRole.EMPLOYEE:
         raise ValueError("You are not in a Employee role to create a request")
 
-    Request(current_user, equipments)
+    return Request(current_user, equipments)
