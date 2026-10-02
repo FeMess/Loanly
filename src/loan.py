@@ -17,3 +17,9 @@ class Loan:
         self.status = LoanStatus.ON_GOING
         self.start_date = datetime.now()  # noqa: DTZ005
         self.due_date = self.start_date + timedelta(days=30)
+
+    def complete_loan(self):
+        if not self.status == LoanStatus.ON_GOING:
+            raise ValueError("The loan is not on going")
+
+        self.status = LoanStatus.COMPLETED

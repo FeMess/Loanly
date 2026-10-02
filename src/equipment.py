@@ -23,6 +23,16 @@ class Equipment:
 
     def borrow(self):
         if not self.status == EquipmentStatus.RESERVED:
-            raise ValueError("All equipments must be reserved before deliver")
+            raise ValueError(
+                "You cannot borrow this equipment. The equipment is not reserved"
+            )
 
         self.status = EquipmentStatus.BORROWED
+
+    def make_available(self):
+        if not self.status == EquipmentStatus.BORROWED:
+            raise ValueError(
+                "You cannot make available this equipment. The equipment is not borrowed"
+            )
+
+        self.status = EquipmentStatus.AVAILABLE
