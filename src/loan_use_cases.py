@@ -34,3 +34,7 @@ def return_equipments(current_user, loan):
         equipment.make_available()
 
     loan.complete_loan()
+
+
+def extend_due_date():
+    pass
