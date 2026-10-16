@@ -36,5 +36,11 @@ def return_equipments(current_user, loan):
     loan.complete_loan()
 
 
-def extend_due_date():
-    pass
+def extend_due_date(current_user, loan, days):
+    if not current_user.role == UserRole.EMPLOYEE:
+        raise ValueError("You are not in Employee role to extend loan")
+
+    if not current_user.id == loan.request.employee.id:
+        raise ValueError("You are not responsible for this loan")
+
+    loan.extend_due_date(days)
