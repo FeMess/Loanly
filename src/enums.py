@@ -25,3 +25,12 @@ class LoanStatus(Enum):
     ON_GOING = "On Going"
     COMPLETED = "Completed"
     OVERDUE = "Overdue"
+
+
+class EventAction(Enum):
+    CREATED = "The request has been created"
+    CANCELLED = "The request has been cancelled"
+    APPROVED = "The request has been approved"
+    REJECTED = "The request has been rejected"
+    DELIVERED = "The equipment has been delivered"
+    RETURNED = "The equipment has been returned"
